@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Dark mode by default for fintech/trading feel */
+  --background: 222 47% 4%;
+  --foreground: 210 40% 98%;
+
+  --card: 222 47% 9%;
+  --card-foreground: 210 40% 98%;
+
+  --popover: 222 47% 9%;
+  --popover-foreground: 210 40% 98%;
+
+  --primary: 217 100% 56%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 220 22% 20%;
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 220 22% 20%;
+  --muted-foreground: 215 20.2% 58%;
+
+  --accent: 217 100% 56%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+
+  --success: 142 71% 45%;
+  --success-foreground: 144 70% 98%;
+
+  --border: 220 22% 18%;
+  --input: 220 22% 18%;
+  --ring: 217 100% 56%;
+
+  --radius: 0.75rem;
+}
+
+.light {
+  --background: 186 35% 88%;
+  --foreground: 220 35% 12%;
+
+  --card: 186 28% 93%;
+  --card-foreground: 220 35% 12%;
+
+  --popover: 186 28% 93%;
+  --popover-foreground: 220 35% 12%;
+
+  --primary: 38 92% 50%;
+  --primary-foreground: 0 0% 0%;
+
+  --secondary: 186 22% 80%;
+  --secondary-foreground: 220 35% 12%;
+
+  --muted: 186 22% 80%;
+  --muted-foreground: 220 15% 38%;
+
+  --accent: 38 92% 50%;
+  --accent-foreground: 0 0% 0%;
+
+  --destructive: 0 80% 52%;
+  --destructive-foreground: 0 0% 100%;
+
+  --success: 142 60% 36%;
+  --success-foreground: 0 0% 100%;
+
+  --border: 186 18% 72%;
+  --input: 186 18% 72%;
+  --ring: 38 92% 50%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased font-sans selection:bg-primary/30 selection:text-primary-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-tight font-bold;
+  }
+  
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-secondary/80;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500;
+  }
+  .glass-panel {
+    @apply bg-card/60 backdrop-blur-md border border-white/5 shadow-xl;
+  }
+  .animate-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
